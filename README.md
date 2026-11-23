@@ -26,7 +26,9 @@ crg9-control input dp2 --json
 crg9-control hdmi --display H1AK500000 --json
 ```
 
-`--display` accepts an EDID serial or `serial=SERIAL`. Omit it to use the app selection or automatically select the only connected CRG9. Ambiguous monitors cause an error; unrelated displays are never selected. The helper enumerates DDC services by EDID serial, including monitors that remain reachable while showing another computer. Whether an inactive input accepts commands still depends on the monitor and cable.
+`--display auto` selects the only detected CRG9 and ignores the saved selection. This is useful when an inactive input reports a placeholder EDID serial. It fails if multiple CRG9 monitors are detected.
+
+`--display` otherwise accepts an EDID serial or `serial=SERIAL`. Omit it to use the app selection or automatically select the only connected CRG9. Ambiguous monitors cause an error; unrelated displays are never selected. The helper enumerates DDC services by EDID serial, including monitors that remain reachable while showing another computer. Whether an inactive input accepts commands still depends on the monitor and cable.
 
 Writes are followed by readback. Exit status **0** means success, **1** a communication error, **2** invalid arguments, and **3** a command sent without a verified input change. JSON exposes `writeAccepted`, `verified`, `observedInput`, and any warning. `--no-verify` deliberately sends without readback, reports `verified` as absent, and exits 0 after a successful transport write. This does not prove the monitor changed inputs. Error JSON goes to stdout; human-readable errors go to stderr.
 

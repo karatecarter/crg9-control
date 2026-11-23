@@ -38,6 +38,8 @@ final class ControlTests: XCTestCase {
         let a=Monitor(name:"C49RG9x",serial:"A",selector:"serial=A",online:true)
         let b=Monitor(name:"C49RG9x",serial:"B",selector:"serial=B",online:true)
         XCTAssertThrowsError(try MonitorControl.select([a,b],target:nil))
+        XCTAssertThrowsError(try MonitorControl.select([a,b],target:"auto"))
+        XCTAssertEqual(try MonitorControl.select([a],target:"auto"),a)
         XCTAssertThrowsError(try MonitorControl.select([a,b],target:"missing"))
         XCTAssertEqual(try MonitorControl.select([a,b],target:"B"),b)
         XCTAssertEqual(try MonitorControl.select([a,b],target:"serial=A"),a)

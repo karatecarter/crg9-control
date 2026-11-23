@@ -21,7 +21,7 @@ import CRG9Core
                 let result = try await Task.detached { () throws -> ([Monitor], MonitorStatus) in
                     let control = try MonitorControl()
                     let found = try control.displays()
-                    let resolved = try MonitorControl.select(found, target: target)
+                    let resolved = try MonitorControl.select(found, target: found.count == 1 ? nil : target)
                     return (found, try control.status(target: resolved.selector))
                 }.value
                 monitors = result.0; selected = result.1.display.selector

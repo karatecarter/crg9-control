@@ -12,7 +12,8 @@ Usage:
   crg9-control dp1|dp2|hdmi [--display SERIAL] [--json] [--no-verify]
   crg9-control --help
 
---display accepts the EDID serial from 'list', or serial=SERIAL.
+--display auto selects the only detected CRG9, ignoring the saved selection.
+--display otherwise accepts the EDID serial from 'list', or serial=SERIAL.
 The app's selected monitor is used when --display is omitted.
 DP2 requires modified CCAA 1007.3 firmware. PBP control is unavailable.
 Exit codes: 0 success; 1 communication error; 2 invalid arguments;

@@ -122,7 +122,7 @@ public struct MonitorControl {
         return found
     }
     public static func select(_ monitors: [Monitor], target: String?) throws -> Monitor {
-        let candidates = monitors.filter { target == nil || $0.selector == target || $0.serial == target }
+        let candidates = monitors.filter { target == nil || target == "auto" || $0.selector == target || $0.serial == target }
         guard candidates.count == 1, let monitor = candidates.first else {
             if monitors.isEmpty { throw ControlError("No CRG9 found. Check the display cable and wake the monitor, then refresh.") }
             if let target, candidates.isEmpty { throw ControlError("The selected CRG9 (\(target)) is unavailable. Refresh and choose a connected monitor.") }
