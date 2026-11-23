@@ -1,0 +1,4 @@
+m1ddc: https://github.com/waydabber/m1ddc
+Vendored source commit: 9d75fb6 (full identity recorded in UPSTREAM-COMMIT).
+MIT license: m1ddc/LICENSE. Unmodified upstream source; no local probe aliases.
+Used for Apple Silicon DDC transport, including direct EDID serial selection.

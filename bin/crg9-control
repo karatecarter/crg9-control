@@ -1,0 +1,3 @@
+#!/bin/sh
+project_dir=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+exec "$project_dir/build/CRG9 Control.app/Contents/MacOS/crg9-control" "$@"
